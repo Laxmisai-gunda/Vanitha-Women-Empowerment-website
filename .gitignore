@@ -1,0 +1,9 @@
+# Ignore dependencies
+node_modules/
+package-lock.json
+
+# Ignore IDE settings
+.vscode/
+
+# Ignore uploads folder
+uploads/

@@ -1,0 +1,296 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* header {
+    background-color: #a365af;
+    color: white;
+    padding: 1rem;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 1rem;
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+}
+
+.nav-links li a:hover {
+    text-decoration: underline;
+}
+
+.site-title h1 {
+    margin: 0;
+    font-family: 'Special Font', sans-serif; /* Replace with your desired font family 
+    font-size: 1.5rem;
+    text-align: left;
+    /* Adjust the text alignment or additional styles as needed 
+} */
+
+header {
+    background-color: #a067b6;
+    padding: 10px 20px;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+}
+
+.nav-links {
+    list-style: none;
+}
+
+.nav-links li {
+    display: inline;
+    margin-left: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    padding: 8px 16px;
+    background-color: white;
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-links a:hover {
+    background-color: #ab3ee6;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+main {
+    padding: 2rem;
+}
+
+.intro {
+    text-align: center;
+}
+
+.slider {
+    position: relative;
+    width: 100%;
+    height: 500px; /* Adjust height based on your requirement */
+    overflow: hidden;
+}
+
+.slides {
+    display: flex;
+    height: 100%;
+    transition: transform 1s ease;
+}
+
+.intro-image {
+    width: 100vw;
+    height: 100%;
+    object-fit: cover; /* Ensures the image fills the container while maintaining aspect ratio */
+    object-position: center; /* Centers the image */
+    flex-shrink: 0;
+}
+@media (max-width: 768px) {
+    .slider {
+        height: 300px; /* Reduce height on smaller screens */
+    }
+    
+    .intro-image {
+        object-fit: contain; /* Shows the entire image without cropping */
+    }
+}
+/* For screens larger than 768px but smaller than full-width */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .slider {
+        height: 400px; /* Adjust the height for medium-sized screens */
+    }
+
+    .intro-image {
+        object-fit: contain; /* Ensure the full image is visible */
+    }
+}
+
+/* For screens larger than 1024px but smaller than full-width (up to 1200px) */
+@media (min-width: 1025px) and (max-width: 1200px) {
+    .slider {
+        height: 500px; /* Adjust height for larger screens */
+    }
+
+    .intro-image {
+        object-fit: contain; /* Keep the full image visible */
+    }
+}
+
+/* For very large screens (above 1200px) */
+@media (min-width: 1201px) {
+    .slider {
+        height: 600px; /* Increase height for larger screens */
+    }
+
+    .intro-image {
+        object-fit: contain; /* Ensure full visibility */
+    }
+}
+
+
+.left-arrow, .right-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 3rem;
+    color: whitesmoke;
+    padding: 0.5rem;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 10;
+}
+
+.left-arrow {
+    left: 20px;
+}
+
+.right-arrow {
+    right: 20px;
+}
+
+.left-arrow:hover, .right-arrow:hover {
+    color:white;
+}
+
+
+.button {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem;
+    background-color: #ab3ee6;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.button:hover {
+    background-color: #870fb3;
+}
+
+.about-us {
+    margin: 2rem 0;
+    background-color: rgb(223, 215, 240);
+    padding: 10px;
+}
+
+
+.about-us h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.about-us .layout {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.about-us .layout img {
+    width: 250px;
+    height: auto;
+    border-radius: 10px;
+    margin-right: 20px;
+}
+
+.about-us .layout .text {
+    max-width: 600px;
+    text-align: left;
+}
+
+/* Alternate layout (reverse) */
+.about-us .layout:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.about-us .layout:nth-child(even) img {
+    margin-left: 20px;
+    margin-right: 0;
+}
+
+.contact-us {
+    margin: 2rem 0;
+    text-align: center;
+    background-color: rgb(223, 215, 240);
+    padding: 10px;
+}
+
+footer {
+    background-color: #a365af;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+}
+
+/* Layout for Mission Statement and Image */
+.about-us .layout {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.about-us .layout img {
+    max-width: 50%;
+    height: auto;
+    margin-right: 1rem;
+}
+
+.about-us .layout .text {
+    flex: 1;
+}
+
+.about-us .layout:nth-of-type(even) {
+    flex-direction: row-reverse;
+}
+
+/* For alternating content and images */
+.about-us .alternate {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.about-us .alternate img {
+    max-width: 50%;
+    height: auto;
+    margin-right: 1rem;
+}
+
+.about-us .alternate .text {
+    flex: 1;
+}
+
+.about-us .alternate:nth-of-type(even) {
+    flex-direction: row-reverse;
+}

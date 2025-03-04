@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application for Tailor Job</title>
+    <link rel="stylesheet" href="css/signup.css">
+</head>
+<body>
+    <div class="signup-container">
+        <div class="signup-form">
+            <h1>Application for Tailor Job</h1>
+            <form id="signupForm">
+                <!-- Personal Information Container -->
+                <div class="personal-info">
+                    <h2>Personal Information</h2>
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" name="firstName" required>
+
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" name="lastName" required>
+
+                    <label for="age">Age</label>
+                    <input type="number" id="age" name="age" required>
+
+                    <label for="gender">Gender</label>
+                    <input type="text" id="gender" name="gender" value="Female" readonly>
+
+                    <label for="mobileNumber">Mobile No</label>
+                    <input type="tel" id="mobileNumber" name="mobileNumber" required>
+
+                    <label for="qualification">Qualification (Highest Degree)</label>
+                    <input type="text" id="qualification" name="qualification" required>
+
+                    <label for="experience">Experience</label>
+                    <input type="text" id="experience" name="experience" required>
+
+                    <label for="resume">Sample work</label>
+                    <input type="file" id="resume" name="resume" required>
+
+                    <label for="address">Address</label>
+                    <textarea id="address" name="address" rows="4" required></textarea>
+                    
+                    <!-- Hidden jobType field to specify the job type as 'tailor' -->
+                    <input type="hidden" name="jobType" value="Tailor">
+                </div>
+
+                <button type="submit">Apply Now</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+    document.getElementById('signupForm').addEventListener('submit', async (event) => {
+        event.preventDefault(); // Prevent default form submission
+
+        const formData = new FormData(event.target);
+        const data = Object.fromEntries(formData);
+
+        try {
+            const response = await fetch('/api/applications', { // Adjust the endpoint if necessary
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+
+            if (response.ok) {
+    const result = await response.json();
+    alert(result.message);
+    // Redirect to VanithaServices.html upon successful application
+    window.location.href = 'VanithaServices.html';
+ } else {
+                const error = await response.json();
+                alert('Application failed: ' + error.message);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    });
+    </script>
+</body>
+</html>

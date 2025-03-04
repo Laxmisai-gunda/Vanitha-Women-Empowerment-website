@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Applications</title>
+    <link rel="stylesheet" href="css/jobapplications.css"> <!-- Link to the CSS -->
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Logout</a></li>
+            <li><a href="dashboard1.html">Complaints</a></li>
+        </ul>
+    </nav>
+
+    <h1>Job Applications</h1>
+    <div id="jobTypeFilterWrapper">
+        <label for="jobTypeFilter">Filter by Job Type:</label>
+        <select id="jobTypeFilter">
+            <option value="">select type</option>
+            <option value="Teacher">Teacher</option>
+            <option value="Tailor">Tailor</option>
+            <option value="Chef">Chef</option>
+        </select>
+        <button onclick="fetchApplications()" id="fetchApplicationsBtn">Fetch Applications</button>
+    </div>
+
+    <table id="applicationsTable">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Job Type</th>
+                <th>Qualification</th>
+                <th>Experience</th>
+                <th>Additional Info</th>
+                <th>Mobile number</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Data rows will be added here by JavaScript -->
+        </tbody>
+    </table>
+    <footer>
+        <p>&copy; 2024 Women Safety Blockchain Application. All rights reserved.</p>
+    </footer>
+    <script>
+
+const jobType = document.getElementById('jobTypeFilter').value;
+console.log('Job Type Selected:', jobType); 
+        // This function will only be called when the "Fetch Applications" button is clicked
+        async function fetchApplications() {
+            
+            try {
+                const jobType = document.getElementById('jobTypeFilter').value;
+                const response = await fetch(`http://localhost:3000/api/admin/applications?jobType=${jobType}`);
+
+    
+                if (!response.ok) {
+                    throw new Error('Failed to fetch applications');
+                }
+    
+                const data = await response.json();
+                console.log('Fetched Data:', data);  // Log to check the response data
+    
+                const tableBody = document.getElementById('applicationsTable').getElementsByTagName('tbody')[0];
+                tableBody.innerHTML = ''; // Clear existing rows
+    
+                if (data.length === 0) {
+                    const row = tableBody.insertRow();
+                    const cell = row.insertCell(0);
+                    cell.colSpan = 8;
+                    cell.innerText = 'No applications found';
+                    return;
+                }
+    
+                data.forEach(application => {
+                    const row = tableBody.insertRow();
+                    row.insertCell(0).innerText = application.firstName;
+                    row.insertCell(1).innerText = application.lastName;
+                    row.insertCell(2).innerText = application.age;
+                    row.insertCell(3).innerText = application.gender;
+                    row.insertCell(4).innerText = application.jobType;
+                    row.insertCell(5).innerText = application.qualification;
+                    row.insertCell(6).innerText = application.experience;
+                    row.insertCell(7).innerText = application.additionalInfo;
+                    row.insertCell(8).innerText = application.mobileNumber;
+
+                });
+            } catch (error) {
+                console.error('Error fetching applications:', error);
+                const tableBody = document.getElementById('applicationsTable').getElementsByTagName('tbody')[0];
+                tableBody.innerHTML = '<tr><td colspan="8">Error fetching applications</td></tr>';
+            }
+        }
+    
+        // This will trigger the function only when the button is clicked
+        document.getElementById('fetchApplicationsBtn').addEventListener('click', fetchApplications);
+    </script>
+    
+
+</body>
+</html>

@@ -1,0 +1,156 @@
+/* Reset styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Make sure the body takes up full height */
+html, body {
+    height: 100%;
+}
+
+/* Set the body to a flex container */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #000000;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Navbar Styles */
+nav {
+    background-color: #a158a3;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px 15px;
+    display: inline-block;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Main Content */
+h1 {
+    text-align: center;
+    margin-top: 80px; /* Ensure content doesn't overlap the fixed navbar */
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 16px;
+}
+
+/* Reset styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Container to align dropdown and button inline */
+#jobTypeFilterWrapper {
+    display: flex;
+    align-items: center;  /* Align elements vertically centered */
+    justify-content: flex-start;  /* Align to the left */
+    gap: 10px;  /* Space between dropdown and button */
+}
+
+/* Styling for the dropdown */
+select {
+    padding: 8px 12px;  /* Adjust padding */
+    font-size: 14px;  /* Font size */
+    width: 200px;  /* Fixed width for dropdown */
+}
+
+/* Styling for the button */
+button {
+    padding: 8px 15px;  /* Adjust padding */
+    font-size: 14px;
+    background-color: #a158a3;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Button hover effect */
+button:hover {
+    background-color: #9b4a9b;  /* Darker color on hover */
+}
+
+/* Ensure the container and elements stay inline */
+#fetchApplicationsBtn {
+    margin-left: 10px;  /* Space between dropdown and button */
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 600px) {
+    #jobTypeFilterWrapper {
+        flex-direction: column;  /* Stack dropdown and button vertically */
+        align-items: stretch;  /* Make both elements stretch full width */
+    }
+
+    select, button {
+        width: 100%;  /* Full width on smaller screens */
+        margin-left: 0;  /* Remove margin on smaller screens */
+    }
+}
+
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #a158a3;
+    color: white;
+}
+
+tr:hover {
+    background-color: #f9f9f9;
+}
+
+/* Footer Styles */
+footer {
+    text-align: center;
+    padding: 1em;
+    background-color: #a158a3;
+    color: #fff;
+    font-size: 0.8em;
+    margin-top: auto; /* Pushes the footer to the bottom */
+}

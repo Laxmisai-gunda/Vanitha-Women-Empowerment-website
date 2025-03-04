@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Complaints</title>
+    <link rel="stylesheet" href="css/dashboard1.css"> <!-- Ensure this matches User Dashboard CSS -->
+</head>
+<body>
+    <header>
+        <div class="navbar">
+        <div class="logo">Admin Dashboard</div>
+        
+            <ul class = "nav-links">
+                <li><a href="index.html">Logout</a></li>
+                <li><a href="JobApplications.html">JobApplications</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <div class="container mt-5">
+            <section class="complaints-section">
+                <h2>Submitted Complaints</h2>
+                <table id="complaintsTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Incident Date</th>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>Address</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="complaintsBody">
+                        <!-- Complaints will be populated here -->
+                    </tbody>
+                </table>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Vanitha Safety Application. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const complaintsBody = document.getElementById('complaintsBody');
+            
+            // Fetch complaints and display them
+            try {
+                const response = await fetch('/api/complaints');
+                const complaints = await response.json();
+                
+                if (response.ok) {
+                    complaints.forEach(complaint => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = ` 
+                            <td>${complaint._id}</td>
+                            <td>${new Date(complaint.incidentDate).toLocaleDateString()}</td>
+                            <td>${complaint.title}</td>
+                            <td>${complaint.description}</td>
+                            <td>${complaint.address}</td>
+                            <td>
+                                <button class="review-btn" data-id="${complaint._id}" ${complaint.status === 'Reviewed' ? 'disabled' : ''}>
+                                    ${complaint.status === 'Reviewed' ? 'Reviewed' : 'Mark as Reviewed'}
+                                </button>
+                            </td>`;
+                        complaintsBody.appendChild(row);
+                    });
+                } else {
+                    complaintsBody.innerHTML = '<tr><td colspan="6">No complaints found.</td></tr>';
+                }
+            } catch (error) {
+                console.error('Error loading complaints:', error);
+                complaintsBody.innerHTML = '<tr><td colspan="6">Error loading complaints.</td></tr>';
+            }
+
+            // Handle "Mark as Reviewed" button clicks
+            complaintsBody.addEventListener('click', async (event) => {
+                if (event.target.classList.contains('review-btn')) {
+                    const complaintId = event.target.getAttribute('data-id');
+                    await markAsReviewed(complaintId, event.target);
+                }
+            });
+        });
+
+        // Function to update complaint status to "Reviewed"
+        async function markAsReviewed(id, button) {
+            try {
+                const response = await fetch(`/api/complaints/${id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ status: 'Reviewed' })
+                });
+
+                if (response.ok) {
+                    button.innerText = 'Reviewed';
+                    button.disabled = true;
+                    alert('Complaint marked as "Reviewed" successfully');
+                } else {
+                    alert('Failed to mark complaint as "Reviewed"');
+                }
+            } catch (error) {
+                console.error('Error marking complaint as "Reviewed":', error);
+            }
+        }
+    </script>
+</body>
+</html>

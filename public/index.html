@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Women Safety Blockchain Application</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=YourSpecialFont:wght@400;700&display=swap">
+ <!-- Link to your CSS file -->
+</head>
+<body>
+    <!-- <header>
+        <nav>
+            <div class="site-title">
+                <h1>VANITHA</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="login1.html">Login</a></li>
+                <li><a href="signup.html">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header> -->
+    <header>
+        <div class="navbar">
+            <div class="logo">Vanitha</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="login1.html">Login</a></li>
+                <li><a href="signup.html">Sign Up</a></li>
+                <li><a href="feedback.html">Rate us</a></li>
+            </ul>
+        </div>
+    </header>
+    
+    <main>
+        <section class="intro">
+            <h1>Welcome to Vanitha</h1>
+            <p>Your safety is our priority. A private and secure platform for reporting incidents.</p>
+            <div class="slider">
+                <div class="slides">
+                    <img src="women_banner-1.jpg" alt="Women Safety Image 1" class="intro-image">
+                    <img src="women_banner-2.jpg" alt="Women Safety Image 2" class="intro-image">
+                    <img src="women_banner-3.jpg" alt="Women Safety Image 3" class="intro-image">
+                </div>
+                <!-- Arrows -->
+                <div class="left-arrow">&#10094;</div>
+                <div class="right-arrow">&#10095;</div>
+            </div>
+            <div class="actions">
+                <a href="signup.html" class="button">Join Now</a>
+                <a href="login.html" class="button">Login</a>
+            </div>
+        </section>
+        
+        
+
+        <!-- About Us Section -->
+        <!-- About Us Section -->
+<section class="about-us">
+    <h2>About Us</h2>
+    <p>We are dedicated to ensuring the safety of women everywhere. Our platform provides a secure and private way to report incidents, ensuring that your voice is heard.</p>
+    
+    <!-- Mission Statement Layout -->
+    <div class="layout">
+        <img src="About_3.jpeg" alt="Mission Image">
+        <div class="text">
+            <h3>Mission Statement</h3>
+            <p>Our platform is dedicated to empowering women by providing a secure and private space for reporting incidents. We believe in creating a safe environment where your voice can be heard without fear or judgment.</p>
+        </div>
+    </div>
+    
+    <!-- Technology Assurance Layout -->
+    <div class="layout">
+        <div class="text">
+            <h3>Technology Assurance</h3>
+            <p>Leveraging cutting-edge blockchain technology, we ensure that all your data remains private and secure. Only authorized personnel can access this information, providing peace of mind that your details are handled with the utmost confidentiality.</p>
+        </div>
+        <img src="About_2.jpeg" alt="Technology Image">
+    </div>
+    
+    <!-- Support and Community Layout -->
+    <div class="layout">
+        <img src="about_1.jpg" alt="Support Image" width="225px" >
+        <div class="text">
+            <h3>Support and Community</h3>
+            <p>We are more than just a platform; we are a community. By collaborating with local organizations, NGOs, and government bodies, we strive to offer comprehensive support, making sure you are never alone in your journey.</p>
+        </div>
+    </div>
+</section>
+
+
+        <!-- Contact Us Section -->
+        <section class="contact-us">
+            <h2>Contact Us</h2>
+            <p>If you have any questions or need assistance, please contact us at:</p>
+            <p>Email: support@womensafetyapp.com</p>
+            <p>Phone: +123 456 7890</p>
+        </section>
+    </main>
+
+    <footer>
+        
+        <p>&copy; 2024 Vanitha Safety Application. All rights reserved.</p>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const slides = document.querySelector('.slides');
+            const images = document.querySelectorAll('.intro-image');
+            const totalImages = images.length;
+            let currentIndex = 0;
+        
+            // Function to move slides to the correct image
+            function updateSlider() {
+                const offset = -currentIndex * 100; // Moves the slider by 100% for each image
+                slides.style.transform = `translateX(${offset}vw)`;
+            }
+        
+            // Auto slide every 5 seconds
+            let slideInterval = setInterval(autoSlide, 5000);
+        
+            function autoSlide() {
+                currentIndex = (currentIndex + 1) % totalImages;
+                updateSlider();
+            }
+        
+            // Left arrow functionality
+            document.querySelector('.left-arrow').addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+                updateSlider();
+                resetInterval(); // Reset interval to avoid quick auto slide after manual action
+            });
+        
+            // Right arrow functionality
+            document.querySelector('.right-arrow').addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % totalImages;
+                updateSlider();
+                resetInterval(); // Reset interval to avoid quick auto slide after manual action
+            });
+        
+            // Reset the auto-slide interval after manual navigation
+            function resetInterval() {
+                clearInterval(slideInterval);
+                slideInterval = setInterval(autoSlide, 5000); // Restarts the auto slide
+            }
+        });
+        </script>
+        
+        
+</body>
+</html>

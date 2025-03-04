@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Women Rescue</title>
+    <link rel="stylesheet" href="css/signup.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+    <div class="signup-container">
+        <div class="signup-form">
+            <h1>Sign Up To Vanitha</h1>
+            <form id="signupForm">
+                <!-- Personal Information Container -->
+                <div class="personal-info">
+                    <h2>Personal Information</h2>
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" name="firstName" required>
+
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" name="lastName" required>
+
+                    <label for="age">Age</label>
+                    <input type="number" id="age" name="age" required>
+
+                    <label for="gender">Gender</label>
+                    <input type="text" id="gender" name="gender" value="Female" readonly>
+
+                    <label for="mobileNumber">Mobile No</label>
+                    <input type="tel" id="mobileNumber" name="mobileNumber" required>
+
+                    <label for="profession">Profession</label>
+                    <input type="text" id="profession" name="profession" required>
+
+                    <label for="address">Address</label>
+                    <textarea id="address" name="address" rows="4" required></textarea>
+                </div>
+
+                <!-- Email and Password Container -->
+                <div class="email-password">
+                    <h2>Account Details</h2>
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required>
+                </div>
+
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+    document.getElementById('signupForm').addEventListener('submit', async (event) => {
+        event.preventDefault(); // Prevent default form submission
+
+        const formData = new FormData(event.target);
+        const data = Object.fromEntries(formData);
+
+        try {
+            const response = await fetch('/api/signup', { // Adjust the endpoint if necessary
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+
+            if (response.ok) {
+                const result = await response.json();
+                alert(result.message);
+                // Redirect to login page upon successful sign-up
+                window.location.href = '/login'; 
+            } else {
+                const error = await response.json();
+                alert('Sign Up failed: ' + error.message);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rate Us - Vanitha</title>
+  <style>
+      /* Navbar Styling */
+      .navbar {
+          background-color: #8f4d8a; /* Navbar background color */
+          padding: 10px 20px;
+          position: absolute; /* Position it at the top-left */
+          top: 0;
+          left: 0;
+          z-index: 1000;
+          width: 100%; /* Full width */
+      }
+
+      .navbar ul {
+          list-style: none;
+          display: flex;
+          justify-content: flex-start; /* Align items to the left */
+          padding: 0;
+      }
+
+      .navbar ul li {
+          margin-right: 20px;
+      }
+
+      /* Button/Link Styling */
+      .nav-button {
+          color: black; /* Normal text color */
+          text-decoration: none; /* Remove underline from the link */
+          font-size: 16px;
+          font-weight: normal; /* Make it appear as normal text */
+          padding: 0; /* No padding */
+          border: none; /* No border */
+      }
+
+      .nav-button:hover {
+          color: #ab3ee6; /* Change color on hover */
+          text-decoration: underline; /* Underline text on hover */
+          cursor: pointer; /* Change cursor to pointer for link behavior */
+      }
+
+      /* Adjust the login container for better display */
+      .login-container {
+          display: flex;
+          align-items: top;
+          height: 100vh;
+          background: url('admorUsrlog.jpg') no-repeat center center fixed;
+          background-size: cover;
+          margin-top: 60px; /* Make space for the navbar */
+      }
+
+      .form {
+          padding: 1rem;
+          margin-top: 50px;
+          margin-left: 40px;
+          margin-right: 20px;
+          padding-top: 0px;
+          border-radius: 8px;
+          box-shadow: 0 0 10px rgba(136, 7, 115, 0.889);
+          max-width: 650px;
+          max-height: 200px;
+          width: 100%;
+      }
+
+      .container {
+          margin: 10px 0 30px 200px;
+          width: 70%;
+          height: 450px;
+          display: flex;
+          justify-content: center;
+          gap: 10px;
+      }
+
+      .container img {
+          width: 15%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 10px;
+          border: 2px solid rgba(255, 255, 255, 0.684);
+          transition: all ease-in-out 0.55s;
+      }
+
+      .container img:hover {
+          width: 50%;
+      }
+
+      .button {
+          display: inline-block;
+          padding: 0.5rem 1rem;
+          margin: 0.5rem;
+          background-color: #8f4d8a;
+          color: white;
+          text-decoration: none;
+          border-radius: 5px;
+      }
+
+      .button:hover {
+          background-color: #870fb3;
+      }
+
+      h1, h3 {
+          text-align: center;
+      }
+
+      /* Rating Section Styling */
+      .rating-section {
+          padding: 20px;
+          margin-top: 80px; /* Make space for the navbar */
+          text-align: center;
+      }
+
+      .rating-section form {
+          display: inline-block;
+          margin-top: 20px;
+          padding: 20px;
+          border: 1px solid #ab3ee6;
+          border-radius: 8px;
+          background-color: rgba(255, 255, 255, 0.8);
+      }
+
+      .rating-section label {
+          display: block;
+          margin: 10px 0 5px;
+      }
+
+      .rating-section select,
+      .rating-section textarea {
+          width: 70%;
+          padding: 10px;
+          margin-bottom: 10px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+      }
+
+      .rating-section button {
+          background-color: #ab3ee6;
+          color: white;
+          border: none;
+          padding: 10px 20px;
+          border-radius: 5px;
+          cursor: pointer;
+      }
+
+      .rating-section button:hover {
+          background-color: #a067b6;
+      }
+      .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+}
+
+.nav-links {
+    list-style: none;
+}
+
+.nav-links li {
+    display: inline;
+    margin-left: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    padding: 8px 16px;
+    background-color: white;
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-links a:hover {
+    background-color: #ab3ee6;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+header {
+    background-color: #a067b6;
+    padding: 10px 20px;
+}
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <header>
+    <div class="navbar">
+        <div class="logo">Vanitha</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+        </ul>
+    </div>
+</header>
+
+  <!-- Rating Section -->
+  <section class="rating-section">
+      <h2>We value your feedback!</h2>
+      <p>Your input helps us improve our services at Vanitha.</p>
+      
+      <!-- Rating Form -->
+      <form id="ratingForm" onsubmit="submitFeedback(event)">
+          <label for="rating">Rate Us:</label>
+          <select id="rating" name="rating" required>
+              <option value="">Select Rating</option>
+              <option value="1">1 - Poor</option>
+              <option value="2">2 - Fair</option>
+              <option value="3">3 - Good</option>
+              <option value="4">4 - Very Good</option>
+              <option value="5">5 - Excellent</option>
+          </select>
+          
+          <label for="feedback">Feedback:</label>
+          
+          <textarea id="feedback" name="feedback"  rows="3" placeholder="Write your feedback here..." required></textarea>
+          
+          <button type="submit">Submit Feedback</button>
+      </form>
+  </section>
+
+  <!-- Script to handle submission and MongoDB connection -->
+  <script>
+      async function submitFeedback(event) {
+          event.preventDefault(); // Prevent page reload on submit
+          
+          const rating = document.getElementById('rating').value;
+          const feedback = document.getElementById('feedback').value;
+
+          const feedbackData = {
+              rating: rating,
+              feedback: feedback
+          };
+
+          try {
+              const response = await fetch('http://localhost:3000/api/feedback', {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify(feedbackData)
+              });
+
+              if (response.ok) {
+                  alert("Thank you for your feedback!");
+                  document.getElementById('ratingForm').reset(); // Clear form after submission
+              } else {
+                  alert("Error: Unable to submit feedback.");
+              }
+          } catch (error) {
+              console.error("Error submitting feedback:", error);
+              alert("Error submitting feedback. Please try again.");
+          }
+      }
+  </script>
+</body>
+</html>

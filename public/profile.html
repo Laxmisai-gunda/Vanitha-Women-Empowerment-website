@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Women Rescue</title>
+    <link rel="stylesheet" href="css/profile.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+    <header>
+        <h1>Profile</h1>
+        <nav>
+            <ul>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="index.html">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="profile-section">
+            <h2>Profile Details</h2>
+            <form id="profileForm">
+                <div class="form-group">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" id="firstName" name="firstName" required>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" id="lastName" name="lastName" required>
+                </div>
+                <div class="form-group">
+                    <label for="age">Age:</label>
+                    <input type="number" id="age" name="age" required>
+                </div>
+                <div class="form-group">
+                    <label for="gender">Gender:</label>
+                    <select id="gender" name="gender" required>
+                        <option value="">Select Gender</option>
+                        <option value="Female">Female</option>
+                        <option value="Male">Male</option>
+                        <!-- Add more options if needed -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="mobileNumber">Mobile Number:</label>
+                    <input type="text" id="mobileNumber" name="mobileNumber" required>
+                </div>
+                <div class="form-group">
+                    <label for="profession">Profession:</label>
+                    <input type="text" id="profession" name="profession" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Address:</label>
+                    <input type="text" id="address" name="address" required>
+                </div>
+                <button type="submit" class="submit-btn">Update Profile</button>
+            </form>
+        </section>
+
+        <!-- Error message display -->
+        <div id="errorMessage" style="color: red;"></div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Women Safety Blockchain Application. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript to handle fetching and updating profile -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Fetch and populate the profile form with current user details
+            fetch('/api/user/profile', {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`, // Assuming JWT token is stored in localStorage
+                },
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to fetch profile data');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    document.getElementById('firstName').value = data.user.firstName;
+                    document.getElementById('lastName').value = data.user.lastName;
+                    document.getElementById('age').value = data.user.age;
+                    document.getElementById('gender').value = data.user.gender;
+                    document.getElementById('mobileNumber').value = data.user.mobileNumber;
+                    document.getElementById('profession').value = data.user.profession;
+                    document.getElementById('address').value = data.user.address;
+                } else {
+                    showErrorMessage('Failed to load profile data');
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching profile data:', error);
+                showErrorMessage('An error occurred while fetching profile data.');
+            });
+
+            // Handle form submission to update user profile
+            const profileForm = document.getElementById('profileForm');
+            profileForm.addEventListener('submit', function (event) {
+                event.preventDefault();
+                updateProfile();
+            });
+        });
+
+        // Function to update profile information
+        async function updateProfile() {
+            const data = {
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                age: document.getElementById('age').value,
+                gender: document.getElementById('gender').value,
+                mobileNumber: document.getElementById('mobileNumber').value,
+                profession: document.getElementById('profession').value,
+                address: document.getElementById('address').value
+            };
+
+            try {
+                const response = await fetch('/api/user/profile', {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${localStorage.getItem('token')}` // Replace with your method of token storage
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+                
+                if (response.ok) {
+                    alert('Profile updated successfully');
+                } else {
+                    console.error('Update failed:', result.message);
+                    showErrorMessage(`Error updating profile: ${result.message}`);
+                }
+            } catch (error) {
+                console.error('Error during profile update:', error);
+                showErrorMessage('An error occurred while updating the profile');
+            }
+        }
+
+        // Function to display error messages
+        function showErrorMessage(message) {
+            const errorMessageDiv = document.getElementById('errorMessage');
+            errorMessageDiv.textContent = message;
+        }
+    </script>
+
+</body>
+</html>

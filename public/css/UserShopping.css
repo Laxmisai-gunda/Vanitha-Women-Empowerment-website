@@ -1,0 +1,107 @@
+/* Navbar Styling */
+.navbar {
+    background-color: #ea4677; /* Navbar background color */
+    padding: 10px 20px;
+    position: absolute; /* Position it at the top-left */
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%; /* Full width */
+}
+
+.navbar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: right;
+}
+
+.navbar ul li {
+    display: inline;
+    margin-left: 20px;
+
+}
+
+/* Button/Link Styling */
+.nav-button {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    padding: 8px 16px;
+    background-color: white;
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
+
+}
+
+.nav-button:hover {
+    background-color: #d22a5d;
+
+}
+
+/* Adjust the login container for better display */
+.login-container {
+    display: flex;
+    align-items: top;
+    height: 100vh;
+    background: url('admorUsrlog.jpg') no-repeat center center fixed;
+    background-size: cover;
+    margin-top: 60px; /* Make space for the navbar */
+}
+
+.form {
+    padding: 1rem;
+    margin-top: 50px;
+    margin-left: 40px;
+    margin-right: 20px;
+    padding-top: 0px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(136, 7, 115, 0.889);
+    max-width: 650px;
+    max-height: 200px;
+    width: 100%;
+}
+
+.container {
+    margin: 10px 0 30px 200px;
+    width: 70%;
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.container img {
+    width: 15%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.684);
+    transition: all ease-in-out 0.55s;
+}
+
+.container img:hover {
+    width: 50%;
+}
+
+.button {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem;
+    background-color: #ea4677;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.button:hover {
+    background-color: #ea4677;
+}
+
+h1, h3 {
+    text-align: center;
+}
+h1{
+    padding-top: 50px;
+}

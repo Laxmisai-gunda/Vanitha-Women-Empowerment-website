@@ -1,0 +1,122 @@
+/* General Body Styling */
+body {
+    margin: 10px;
+    padding: 10px;
+    font-family: Arial, sans-serif;
+    background-color:white;
+    color: #333;
+}
+
+/* Header Styling */
+header {
+    background-color: #a158a3;
+    color: white;
+    padding: 1rem;
+    text-align: left;
+}
+
+header h1 {
+    margin: 0;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: right;
+}
+
+nav ul li {
+    margin: 0 1rem;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Main Content Styling */
+main {
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-top: 2rem;
+}
+
+/* Section Styling */
+.personal-details, .complaint-section {
+    margin-bottom: 2rem;
+}
+
+.personal-details h2, .complaint-section h2 {
+    color: #89359c;
+    margin-bottom: 1rem;
+}
+
+.details p {
+    background-color: #e9ecef;
+    padding: 0.5rem;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+}
+
+/* Form Styling */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.form-group input[type="text"],
+.form-group input[type="date"],
+.form-group input[type="time"],
+.form-group textarea,
+.form-group input[type="file"] {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.submit-btn {
+    padding: 0.5rem;
+    background-color: #a45bbd;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.submit-btn:hover {
+    background-color: #89359c;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #89359c;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    
+    bottom: 0;
+    width: 100%;
+}

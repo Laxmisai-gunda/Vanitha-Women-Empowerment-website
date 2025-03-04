@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Feedback - Vanitha</title>
+    <style>
+        /* Navbar Styling */
+        .navbar {
+            background-color: #8f4d8a;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar .title {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .navbar .nav-links {
+            list-style: none;
+        }
+
+        .navbar .nav-links li {
+            display: inline;
+            margin-left: 20px;
+        }
+
+        .navbar .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            padding: 8px 16px;
+            background-color: #ab3ee6;
+            border-radius: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar .nav-links a:hover {
+            background-color: #870fb3;
+        }
+
+        /* Feedback Table Styling */
+        .feedback-section {
+            padding: 20px;
+            max-width: 800px;
+            margin: 50px auto;
+        }
+
+        .feedback-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .feedback-table, .feedback-table th, .feedback-table td {
+            border: 1px solid #ddd;
+        }
+
+        .feedback-table th, .feedback-table td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        .feedback-table th {
+            background-color: #8f4d8a;
+            color: white;
+        }
+
+        .feedback-table td {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="title">Vanitha - Feedback</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Logout</a></li>
+        </ul>
+    </div>
+
+    <!-- Feedback Section -->
+    <section class="feedback-section">
+        <h2>User Feedback</h2>
+        <table class="feedback-table" id="feedbackTable">
+            <thead>
+                <tr>
+                    <th>Rating</th>
+                    <th>Feedback</th>
+                </tr>
+            </thead>
+            <tbody id="feedbackTableBody">
+                <!-- Feedback entries will be injected here by JavaScript -->
+            </tbody>
+        </table>
+    </section>
+
+    <!-- JavaScript to Fetch and Display Feedback in Table -->
+    <script>
+        async function loadFeedback() {
+            try {
+                const response = await fetch('http://localhost:3000/api/feedback');
+                if (response.ok) {
+                    const feedbacks = await response.json();
+                    const feedbackTableBody = document.getElementById('feedbackTableBody');
+
+                    // Clear the table body
+                    feedbackTableBody.innerHTML = '';
+
+                    // Populate the table with feedback entries
+                    feedbacks.forEach(feedback => {
+                        const row = document.createElement('tr');
+                        
+                        const ratingCell = document.createElement('td');
+                        ratingCell.textContent = `${feedback.rating} / 5`;
+                        
+                        const feedbackCell = document.createElement('td');
+                        feedbackCell.textContent = feedback.feedback;
+
+                        row.appendChild(ratingCell);
+                        row.appendChild(feedbackCell);
+                        feedbackTableBody.appendChild(row);
+                    });
+                } else {
+                    console.error("Error fetching feedback data");
+                    document.getElementById('feedbackTableBody').innerHTML = '<tr><td colspan="2">Error loading feedback. Please try again later.</td></tr>';
+                }
+            } catch (error) {
+                console.error("Error:", error);
+                document.getElementById('feedbackTableBody').innerHTML = '<tr><td colspan="2">Error loading feedback. Please try again later.</td></tr>';
+            }
+        }
+
+        // Load feedback when the page loads
+        window.onload = loadFeedback;
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,151 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Header Styling */
+header {
+    background-color: #a158a3;
+    color: white;
+    padding: 1rem;
+    text-align: left;
+}
+
+header h1 {
+    margin: 0;
+}
+nav {
+    margin-left: 1100px;
+    background: white;
+    width:360px;
+    display: flex;
+    justify-content: space-between;
+    padding:5px;
+    border-radius: 22px;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+    align-items: center;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+}
+
+.nav-links {
+    list-style: none;
+}
+
+.nav-links li {
+    display: inline;
+    margin-left: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    padding: 8px 16px;
+    background-color: white;
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-links a:hover {
+    background-color: #ab3ee6;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: right;
+}
+
+nav ul li {
+    margin: 0 1rem;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding: 2rem;
+}
+
+.complaints-list {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.complaint-item {
+    border-bottom: 1px solid #ddd;
+    padding: 1rem 0;
+}
+
+.complaint-item:last-child {
+    border-bottom: none;
+}
+
+.complaint-item h3 {
+    margin: 0;
+    font-size: 1.25rem;
+}
+
+.complaint-item p {
+    margin: 0.5rem 0;
+}
+
+.complaint-item button {
+    background-color: #a158a3;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.complaint-item button:hover {
+    background-color: #a52cb3;
+}
+
+footer {
+    background: #a158a3;
+    padding: 1rem;
+    text-align: center;
+    border-top: 1px solid #e2e2e2;
+    color: #ffffff;
+}
+.b1{
+    
+  color: rgb(252, 248, 248);
+  background-color: #ab3ee6;
+  border-radius: 10px;
+  height: 30px;
+  width: 100px;
+  font-family:'Times New Roman', Times, serif;
+}

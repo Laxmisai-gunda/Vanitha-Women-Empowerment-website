@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Vanitha</title>
+    <link rel="stylesheet" href="css/login.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-form">
+            <h1 style="color: #b92c81;">Login To Rescue Women</h1><br>
+            <form id="loginForm">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+    document.getElementById('loginForm').addEventListener('submit', async (event) => {
+        event.preventDefault(); // Prevent default form submission
+
+        const formData = new FormData(event.target);
+        const data = Object.fromEntries(formData);
+
+        try {
+            const response = await fetch('/api/login', { // Adjust the endpoint if necessary
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+
+            if (response.ok) {
+                const result = await response.json();
+                alert(result.message);
+                // Redirect to dashboard upon successful login
+                window.location.href = '/VanithaServices'; 
+            } else {
+                const error = await response.json();
+                alert('Login failed: ' + error.message);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    });
+    </script>
+</body>
+</html>
